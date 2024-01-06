@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .progress-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .colored {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+<li>I am Mohammad Kafeel</li>
+<li>I am doing BTech in Computer Science And Engineering from Ramgarh Engineering College</li>
+<li>My minor project: Progress Step</li>
+<div class="progress-container" id="progress-container">
+  <div class="circle" id="circle-1">1</div>
+  <div class="circle" id="circle-2">2</div>
+  <div class="circle" id="circle-3">3</div>
+  <div class="circle" id="circle-4">4</div>
+  <div class="circle" id="circle-5">5</div>
+</div>
+
+<div class="button-container">
+  <button onclick="move(-1)">Previous</button>
+  <button onclick="move(1)">Next</button>
+</div>
+
+<script>
+  let currentStep = 1;
+  const maxSteps = 5;
+const circle = document.getElementById(`circle-1`);
+circle.classList.add('colored');
+
+  function move(stepChange) {
+    currentStep += stepChange;
+
+    // Ensure the currentStep stays within bounds
+    currentStep = Math.max(1, Math.min(currentStep, maxSteps));
+
+    updateProgress();
+  }
+
+  function updateProgress() {
+    for (let i = 1; i <= maxSteps; i++) {
+      const circle = document.getElementById(`circle-${i}`);
+      if (i === currentStep) {
+        circle.classList.add('colored');
+      } else {
+        circle.classList.remove('colored');
+      }
+    }
+  }
+</script>
+
+</body>
+  </html>
+  
